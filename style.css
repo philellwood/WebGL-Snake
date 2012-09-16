@@ -1,0 +1,51 @@
+body{
+	background-color:black;
+	color:white;
+	font-family: "Helvetica";
+}
+
+#centreDiv { 
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 10px;
+	padding: 0;
+	width : 500px;
+	min-height: 100%;
+}
+
+#canvas{
+	margin-right: auto;
+	margin-left: auto;
+	border-radius: 5px;
+	border: 5px solid gray;
+}
+#score{
+	position: relative;
+	font-family: "Futura";
+	top: -500px;
+	left: -220px;
+}
+#explanation{
+	position:absolute;
+	top: 70px;
+	left: 10px;
+	background-color: silver;
+	padding: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	border-radius: 5px;
+	border: 5px solid gray;
+}
+#console{
+	position:absolute;
+	top: 70px;
+	right: 10px;
+	width: 200px;
+	height: 450px;
+	background-color: silver;
+	padding: 10px;
+	border-radius: 5px;
+	border: 5px solid gray;
+	overflow: auto;
+}

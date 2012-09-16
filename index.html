@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>Snake</title>
+        
+        <link href='style.css' rel='stylesheet' type='text/css'>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="glMatrix-0.9.5.min.js"></script>
+		<script src="RequestAnimationFrame.js"></script>
+	
+		<script src="texture.js"></script>
+		<script src="shaders.js"></script>
+		<script src="buffers.js"></script>
+		<script src="camera.js"></script>
+		<script src="maze.js"></script>
+		<script src="util.js"></script>
+		<script src="powerUp.js"></script>
+		<script src="apple.js"></script>
+		<script src="skybox.js"></script>
+		<script src="snakebit.js"></script>
+		<script src="head.js"></script>
+		<script src="input.js"></script>
+		<script src="index.js"></script>
+		
+		<script id="shader-fs" type="x-shader/x-fragment">
+			precision mediump float;
+			
+			varying vec2 vTextureCoord;
+			
+			uniform sampler2D uSampler;
+			
+			void main(void) {
+			    gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
+			}
+		</script>
+		
+		<script id="shader-vs" type="x-shader/x-vertex">
+			attribute vec3 aVertexPosition;
+			attribute vec2 aTextureCoord;
+			
+			uniform mat4 uMVMatrix;
+			uniform mat4 uPMatrix;
+			
+			varying vec2 vTextureCoord;
+			
+			void main(void) {
+			    gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+			    vTextureCoord = aTextureCoord;
+			}
+		</script>
+
+		
+    </head>
+    <body onload="webGLStart()">
+    <div id ="centreDiv">
+    <h1>WebGL Snake</h1>
+        <div id="game-frame">
+        	
+            <canvas id="canvas" width="500" height="500"></canvas>
+            <div id='score'></div>
+            
+        </div>
+       
+    </div>   
+     <div id='explanation'>
+            <h2>Controls</h2>
+            <p>W,S - up,down</p>
+            <p>A,D - left, right</p>
+            <p>R,F - forward, back</p>
+            <p>Space - Pause</p>
+            <h2>Camera</h2>
+            <p>1 - Free Camera (best when paused)</p>
+            <p>Mousedrag to look, arrows to move</p>
+            <p>2 - Orbit</p>
+            <p>3 - Follow</p>
+            <p>4 - Fixed</p>
+            
+     </div>
+     <div id='console'>
+            <p id='highScore'>High Score: 0000</p>
+            
+     </div>  
+    </body>
+    
+</html>
